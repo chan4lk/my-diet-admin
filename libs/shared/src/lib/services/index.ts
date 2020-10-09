@@ -11,3 +11,4 @@ export { ProgressService } from './progress.service';
 export { StorageService } from './storage.service';
 export { StoreService } from './store.service';
 export { UserService } from './user.service';
+export { FoodService } from './food.service';

@@ -19,9 +19,9 @@ export class UserGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
     if (this.storage.getItem('__token')) {
-      return of(true);
+      return true;
     }
     this.router.navigate(['/login']);
-    return of(false);
+    return false;
   }
 }

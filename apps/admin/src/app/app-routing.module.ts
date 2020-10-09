@@ -12,13 +12,13 @@ const routes: Routes = [
       import('@my-diet-admin/dashboard').then((m) => m.DashboardModule),
   },
   {
-    path: 'backend/:id',
+    path: 'backend',
     canActivate: [UserGuard],
     loadChildren: () =>
       import('@my-diet-admin/backend').then((m) => m.BackendModule),
   },
   {
-    path: 'reports/:id',
+    path: 'reports',
     canActivate: [UserGuard],
     loadChildren: () =>
       import('@my-diet-admin/reports').then((m) => m.ReportsModule),
