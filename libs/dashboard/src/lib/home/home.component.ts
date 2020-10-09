@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 @Component({
   selector: 'md-home',
   templateUrl: './home.component.html',
@@ -28,4 +29,40 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  download() {
+    const wrapper = document.getElementById('dashboardWrapper') as HTMLElement;
+    html2canvas(wrapper).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const doc = new jsPDF('p', 'mm', [1000, 1000]);
+      doc.addImage(
+        imgData,
+        'PNG',
+        10,
+        10,
+        wrapper.clientWidth,
+        wrapper.clientHeight
+      );
+      doc.save('sample-file.pdf');
+    });
+  }
+
+  downloadCharts() {
+    const canvases = document.getElementsByTagName('canvas');
+    const doc = new jsPDF('p', 'mm', [1000, 1000]);
+
+    for (let index = 0; index < canvases.length; index++) {
+      const element = canvases[index];
+      const imgData = element.toDataURL('image/png');
+      doc.addImage(
+        imgData,
+        'PNG',
+        10,
+        10 + element.clientHeight,
+        element.clientWidth,
+        element.clientHeight
+      );
+    }
+    doc.save('sample-file.pdf');
+  }
 }

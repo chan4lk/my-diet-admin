@@ -1,19 +1,33 @@
-<div class="card mt-2" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap" />
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-    <canvas
-      baseChart
-      [datasets]="barChartData"
-      [labels]="barChartLabels"
-      [options]="barChartOptions"
-      [legend]="barChartLegend"
-      [chartType]="barChartType"
-    ></canvas>
+<div class="d-flex justify-content-between">
+  <h1 class="text-secondary">Dashboard</h1>
+  <div></div>
+  <div>
+    <button class="btn btn-secondary m-2" (click)="download()">
+      Download
+    </button>
+    <button class="btn btn-secondary m-2" (click)="downloadCharts()">
+      Download Charts
+    </button>
+  </div>
+</div>
+<div id="dashboardWrapper" class="w-100">
+  <div class="card mt-2" style="width: 18rem;">
+    <img class="card-img-top" src="..." alt="Card image cap" />
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">
+        Some quick example text to build on the card title and make up the bulk
+        of the card's content.
+      </p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <canvas
+        baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType"
+      ></canvas>
+    </div>
   </div>
 </div>
