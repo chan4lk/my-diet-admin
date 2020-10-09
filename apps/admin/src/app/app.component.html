@@ -23,16 +23,24 @@
   <div class="side-bar border p-2" id="navbarSupportedContent">
     <ul class="list-unstyled">
       <li class="text-secondary mt-2">
-        <a href="#"><i class="fa fa-home d-inline"></i> Dashboard </a>
+        <a href="#" [routerLink]="['/dashboard']"
+          ><i class="fa fa-home d-inline"></i> Dashboard
+        </a>
       </li>
       <li class="text-secondary mt-2">
-        <a href="#"><i class="fa fa-user d-inline"></i> Profiles </a>
+        <a href="#" [routerLink]="['/backend/profile']"
+          ><i class="fa fa-user d-inline"></i> Profiles
+        </a>
       </li>
       <li class="text-secondary mt-2">
-        <a href="#"><i class="fa fa-glass-cheers d-inline"></i> Food </a>
+        <a href="#" [routerLink]="['/backend/profile']"
+          ><i class="fa fa-glass-cheers d-inline"></i> Food
+        </a>
       </li>
       <li class="text-secondary mt-2">
-        <a href="#"><i class="fa fa-book d-inline"></i> Reports </a>
+        <a href="#" [routerLink]="['/reports']"
+          ><i class="fa fa-book d-inline"></i> Reports
+        </a>
       </li>
     </ul>
   </div>

@@ -4,6 +4,13 @@
 
 export const environment = {
   production: false,
+  baseUrl: 'https://dieticianweb.azurewebsites.net',
+  auth: 'Auths',
+  users: 'Users',
+  diet: 'Diet',
+  foods: 'Foods',
+  progress: 'api/Progress',
+  profile: 'Profiles',
 };
 
 /*
