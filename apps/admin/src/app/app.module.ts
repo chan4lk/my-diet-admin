@@ -9,6 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '@my-diet-admin/shared';
 import { ENV } from '@my-diet-admin/token';
 import { environment } from '../environments/environment';
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [AppComponent, LoginComponent],
   imports: [
@@ -17,6 +18,7 @@ import { environment } from '../environments/environment';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ChartsModule,
   ],
   providers: [
     {
