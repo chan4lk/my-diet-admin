@@ -18,7 +18,9 @@
     "paths": {
       "@my-diet-admin/dashboard": ["libs/dashboard/src/index.ts"],
       "@my-diet-admin/shared": ["libs/shared/src/index.ts"],
-      "@my-diet-admin/token": ["libs/token/index.ts"]
+      "@my-diet-admin/token": ["libs/token/index.ts"],
+      "@my-diet-admin/backend": ["libs/backend/src/index.ts"],
+      "@my-diet-admin/reports": ["libs/reports/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

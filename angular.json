@@ -183,6 +183,66 @@
           "style": "scss"
         }
       }
+    },
+    "backend": {
+      "projectType": "library",
+      "root": "libs/backend",
+      "sourceRoot": "libs/backend/src",
+      "prefix": "my-diet-admin",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/backend/tsconfig.lib.json",
+              "libs/backend/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/backend/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/backend/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "reports": {
+      "projectType": "library",
+      "root": "libs/reports",
+      "sourceRoot": "libs/reports/src",
+      "prefix": "my-diet-admin",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/reports/tsconfig.lib.json",
+              "libs/reports/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/reports/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/reports/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

@@ -12,6 +12,18 @@ const routes: Routes = [
       import('@my-diet-admin/dashboard').then((m) => m.DashboardModule),
   },
   {
+    path: 'backend/:id',
+    canActivate: [UserGuard],
+    loadChildren: () =>
+      import('@my-diet-admin/backend').then((m) => m.BackendModule),
+  },
+  {
+    path: 'reports/:id',
+    canActivate: [UserGuard],
+    loadChildren: () =>
+      import('@my-diet-admin/reports').then((m) => m.ReportsModule),
+  },
+  {
     path: 'login',
     component: LoginComponent,
   },

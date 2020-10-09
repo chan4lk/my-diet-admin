@@ -35,6 +35,12 @@
     },
     "shared": {
       "tags": ["shared"]
+    },
+    "backend": {
+      "tags": []
+    },
+    "reports": {
+      "tags": []
     }
   }
 }
