@@ -1,5 +1,11 @@
-<h1 class="text-secondary">Foods</h1>
-<table class="table table-striped">
+<div class="d-flex justify-content-between">
+  <h1 class="text-secondary">Foods</h1>
+  <div></div>
+  <button class="btn btn-secondary m-2" (click)="download()">
+    Download
+  </button>
+</div>
+<table id="foods" class="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
