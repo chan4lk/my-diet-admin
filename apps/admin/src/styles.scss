@@ -3,6 +3,7 @@
 $theme-colors: (
   'primary': #02b2aa,
   'secondary': #18756d,
+  'light': lighten(#18756d, 70%),
 );
 
 @import '~bootstrap/scss/bootstrap';
