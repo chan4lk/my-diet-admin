@@ -11,7 +11,9 @@ export class ProfileService {
     private api: ApiService,
     @Inject(ENV) private environment: Environment
   ) {}
-
+  getProfiles() {
+    return this.api.get<ProfileResponse[]>(`${this.environment.profile}`);
+  }
   getProfile(userId: number) {
     return this.api.get<ProfileResponse>(
       `${this.environment.profile}/User/${userId}`
