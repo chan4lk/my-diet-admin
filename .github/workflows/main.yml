@@ -31,6 +31,10 @@ jobs:
           npm i
           npm run production
 
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - uses: lauchacarro/Azure-Storage-Action@master
         with:
           folder: 'dist/apps/admin'
