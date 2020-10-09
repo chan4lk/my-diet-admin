@@ -1,6 +1,10 @@
 <div class="nav d-flex bg-secondary justify-content-between">
   <div class="brand p-2">
-    <i class="fa fa-arrow-left d-inline text-light back"></i>
+    <i
+      data-toggle="collapse"
+      data-target=".side-bar"
+      class="fa fa-align-justify d-inline text-light back"
+    ></i>
 
     <h1 class="text-light d-inline ml-5">
       MY DIET ADMIN
@@ -18,8 +22,17 @@
 <div class="wrapper d-flex bg-light">
   <div class="side-bar border p-2" id="navbarSupportedContent">
     <ul class="list-unstyled">
-      <li class="text-secondary">
-        <i class="fa fa-home d-inline"></i> Dashboard
+      <li class="text-secondary mt-2">
+        <a href="#"><i class="fa fa-home d-inline"></i> Dashboard </a>
+      </li>
+      <li class="text-secondary mt-2">
+        <a href="#"><i class="fa fa-user d-inline"></i> Profiles </a>
+      </li>
+      <li class="text-secondary mt-2">
+        <a href="#"><i class="fa fa-glass-cheers d-inline"></i> Food </a>
+      </li>
+      <li class="text-secondary mt-2">
+        <a href="#"><i class="fa fa-book d-inline"></i> Reports </a>
       </li>
     </ul>
   </div>
@@ -27,7 +40,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-          Content
+          <router-outlet></router-outlet>
         </div>
       </div>
     </div>
