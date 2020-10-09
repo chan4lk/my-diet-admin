@@ -23,7 +23,11 @@
             "aot": true,
             "assets": ["apps/admin/src/favicon.ico", "apps/admin/src/assets"],
             "styles": ["apps/admin/src/styles.scss"],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -119,6 +123,36 @@
           }
         }
       }
+    },
+    "dashboard": {
+      "projectType": "library",
+      "root": "libs/dashboard",
+      "sourceRoot": "libs/dashboard/src",
+      "prefix": "md",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/dashboard/tsconfig.lib.json",
+              "libs/dashboard/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/dashboard/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/dashboard/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
@@ -164,7 +198,8 @@
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "strict": true
     }
   },
   "defaultProject": "admin"

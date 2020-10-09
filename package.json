@@ -38,6 +38,9 @@
     "@angular/platform-browser-dynamic": "^10.1.0",
     "@angular/router": "^10.1.0",
     "@nrwl/angular": "10.3.0",
+    "@popperjs/core": "^2.5.3",
+    "bootstrap": "^4.5.2",
+    "jquery": "^3.5.1",
     "rxjs": "~6.5.5",
     "zone.js": "^0.10.2"
   },
