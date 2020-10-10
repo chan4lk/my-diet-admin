@@ -16,16 +16,16 @@ export class HomeComponent implements OnInit {
     html2canvas(wrapper).then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
       const doc = new jsPDF('p', 'mm', [
-        wrapper.clientWidth,
-        wrapper.clientHeight,
+        wrapper.clientHeight / 2,
+        wrapper.clientWidth / 2,
       ]);
       doc.addImage(
         imgData,
         'PNG',
         10,
         10,
-        canvas.clientWidth,
-        canvas.clientHeight
+        canvas.clientHeight,
+        canvas.clientWidth
       );
       doc.save('dashboard.pdf');
     });
