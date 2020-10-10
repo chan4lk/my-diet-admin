@@ -45,16 +45,19 @@ export class HomeComponent implements OnInit {
     const wrapper = document.getElementById('dashboardWrapper') as HTMLElement;
     html2canvas(wrapper).then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
-      const doc = new jsPDF('p', 'mm', [1000, 1000]);
+      const doc = new jsPDF('p', 'mm', [
+        wrapper.clientWidth,
+        wrapper.clientHeight,
+      ]);
       doc.addImage(
         imgData,
         'PNG',
         10,
         10,
-        wrapper.clientWidth,
-        wrapper.clientHeight
+        canvas.clientWidth,
+        canvas.clientHeight
       );
-      doc.save('sample-file.pdf');
+      doc.save('dashboard.pdf');
     });
   }
 
