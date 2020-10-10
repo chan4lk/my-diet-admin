@@ -12,8 +12,10 @@ export class TopGainersChartComponent implements OnInit {
   constructor(private reportService: ReportService) {}
   topUsers: TopUser[] = [];
   ngOnInit(): void {
+    const now = new Date();
+    now.setDate(now.getDate() - 1);
     this.reportService
-      .getTopGainers(new Date(), 10)
+      .getTopGainers(now, 10)
       .subscribe((users) => (this.topUsers = users));
   }
 

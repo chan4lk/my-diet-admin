@@ -12,7 +12,7 @@ import { RatingService, FoodService } from '../../services';
 export class FoodRatedByDateComponent implements OnInit {
   foods: RatingWithName[] = [];
   filteredFood: RatingWithName[] = [];
-  selectedDay = new Date().getDay();
+  selectedDay = 6;
   constructor(
     private ratingService: RatingService,
     private foodService: FoodService
