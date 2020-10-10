@@ -12,7 +12,7 @@ export class TopLoosersChartComponent implements OnInit {
   topUsers: TopUser[] = [];
   ngOnInit(): void {
     this.reportService
-      .getTopLoosers(new Date('2020-02-25'), 10)
+      .getTopLoosers(new Date(), 10)
       .subscribe((users) => (this.topUsers = users));
   }
 

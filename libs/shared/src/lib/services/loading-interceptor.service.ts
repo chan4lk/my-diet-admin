@@ -12,7 +12,7 @@ import { from } from 'rxjs';
 })
 export class LoadingInterceptor implements HttpInterceptor {
   constructor() {}
-
+  count = 0;
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     // convert promise to observable using 'from' operator
     return from(this.handle(req, next));
@@ -23,13 +23,18 @@ export class LoadingInterceptor implements HttpInterceptor {
     if (!overlay.classList.contains('is-active')) {
       overlay.classList.toggle('is-active');
     }
+    this.count++;
     return next
       .handle(req)
       .pipe(
         finalize(async () => {
-          if (overlay.classList.contains('is-active')) {
-            overlay.classList.toggle('is-active');
+          this.count--;
+          if (this.count === 0) {
+            if (overlay.classList.contains('is-active')) {
+              overlay.classList.toggle('is-active');
+            }
           }
+
           await Promise.resolve(true);
         })
       )
