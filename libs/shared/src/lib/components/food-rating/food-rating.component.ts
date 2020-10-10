@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Rating } from '../../models';
+import { RatingWithName } from '../../models';
 import jsPDF from 'jspdf';
 import { FoodService, RatingService } from '../../services';
 import { map, switchMap } from 'rxjs/operators';
 
-export interface RatingWithName extends Rating {
-  name?: string;
-}
 @Component({
   selector: 'my-diet-admin-food-rating',
   templateUrl: './food-rating.component.html',

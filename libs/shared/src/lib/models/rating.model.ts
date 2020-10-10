@@ -7,3 +7,7 @@ export interface Rating {
   rating: number;
   date: string;
 }
+
+export interface RatingWithName extends Rating {
+  name?: string;
+}

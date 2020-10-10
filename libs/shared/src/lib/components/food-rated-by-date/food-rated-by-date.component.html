@@ -1,1 +1,66 @@
-<p>food-rated-by-date works!</p>
+<div class="card mt-2 mr-2">
+  <div class="card-body">
+    <h5 class="card-title">Food Rating</h5>
+    <p class="card-text d-inline">
+      Checkout ratings for each food item.
+    </p>
+    <button
+      data-html2canvas-ignore="true"
+      (click)="downloadChart('Top Gainers')"
+      class="btn btn-primary mb-2 d-inline"
+    >
+      Download
+    </button>
+    <div class="content d-flex justify-content-around">
+      <form class="p-2 border mr-5">
+        <div class="form-group">
+          <label class="label">Select the day of the week</label>
+          <select
+            (change)="change($event)"
+            [value]="selectedDay"
+            class="form-control"
+            name="date"
+            id="date"
+          >
+            <option value="0">Sunday</option>
+            <option value="1">Monday</option>
+            <option value="2">Tuesday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thursday</option>
+            <option value="5">Friday</option>
+            <option value="6">Satuday</option>
+          </select>
+        </div>
+      </form>
+      <div class="form">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Food Id</th>
+              <th scope="col">User Id</th>
+              <th scope="col">Rating</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of filteredFood; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ item.name }}</td>
+              <td>{{ item.userId }}</td>
+              <td>
+                <i
+                  [ngClass]="[
+                    item.rating === 1 ? 'fa fa-thumbs-up' : 'fa fa-thumbs-down'
+                  ]"
+                ></i>
+              </td>
+              <td>{{ item.date | date: 'MM/dd/yyy' }}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
