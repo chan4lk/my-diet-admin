@@ -10,6 +10,8 @@ import { AuthInterceptor, LoadingInterceptor } from '@my-diet-admin/shared';
 import { ENV } from '@my-diet-admin/token';
 import { environment } from '../environments/environment';
 import { ChartsModule } from 'ng2-charts';
+import { DatePipe } from '@angular/common';
+import 'jspdf-autotable';
 @NgModule({
   declarations: [AppComponent, LoginComponent],
   imports: [
@@ -35,6 +37,7 @@ import { ChartsModule } from 'ng2-charts';
       provide: ENV,
       useValue: environment,
     },
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })

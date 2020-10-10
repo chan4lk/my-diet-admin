@@ -1,6 +1,7 @@
+import { DatePipe } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { ENV, Environment } from '@my-diet-admin/token';
-import { BMIDetail, HealthDetail } from '../models/report.models';
+import { BMIDetail, HealthDetail, TopUser } from '../models/report.models';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -9,6 +10,7 @@ import { ApiService } from './api.service';
 export class ReportService {
   constructor(
     private api: ApiService,
+    private datePipe: DatePipe,
     @Inject(ENV) private environment: Environment
   ) {}
 
@@ -19,6 +21,24 @@ export class ReportService {
   getHealthData(days: number) {
     return this.api.get<HealthDetail[]>(
       `${this.environment.report}/Health/${days}`
+    );
+  }
+
+  getTopGainers(date: Date, count: number) {
+    return this.api.get<TopUser[]>(
+      `${this.environment.report}/TopGainers/${this.datePipe.transform(
+        date,
+        "yyyy'-'MM'-'dd'"
+      )}/${count}`
+    );
+  }
+
+  getTopLoosers(date: Date, count: number) {
+    return this.api.get<TopUser[]>(
+      `${this.environment.report}/TopLoosers/${this.datePipe.transform(
+        date,
+        "yyyy'-'MM'-'dd'"
+      )}/${count}`
     );
   }
 }
