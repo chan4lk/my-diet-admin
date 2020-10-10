@@ -8,6 +8,7 @@ export interface Environment {
   foods: string;
   progress: string;
   profile: string;
+  report: string;
 }
 export const ENV: InjectionToken<Environment> = new InjectionToken<Environment>(
   'env'
