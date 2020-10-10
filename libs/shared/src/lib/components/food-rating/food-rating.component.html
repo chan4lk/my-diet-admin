@@ -25,9 +25,15 @@
         <tbody>
           <tr *ngFor="let item of foods; let i = index">
             <th scope="row">{{ i + 1 }}</th>
-            <td>{{ item.foodId }}</td>
+            <td>{{ item.name }}</td>
             <td>{{ item.userId }}</td>
-            <td>{{ item.rating }}</td>
+            <td>
+              <i
+                [ngClass]="[
+                  item.rating === 1 ? 'fa fa-thumbs-up' : 'fa fa-thumbs-down'
+                ]"
+              ></i>
+            </td>
             <td>{{ item.date | date: 'MM/dd/yyy' }}</td>
             <td></td>
           </tr>

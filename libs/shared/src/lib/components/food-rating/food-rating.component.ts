@@ -1,18 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { Rating } from '../../models';
 import jsPDF from 'jspdf';
-import { RatingService } from '../../services';
+import { FoodService, RatingService } from '../../services';
+import { map, switchMap } from 'rxjs/operators';
+
+export interface RatingWithName extends Rating {
+  name?: string;
+}
 @Component({
   selector: 'my-diet-admin-food-rating',
   templateUrl: './food-rating.component.html',
   styleUrls: ['./food-rating.component.scss'],
 })
 export class FoodRatingComponent implements OnInit {
-  foods: Rating[] = [];
-  constructor(private ratingService: RatingService) {}
+  foods: RatingWithName[] = [];
+  constructor(
+    private ratingService: RatingService,
+    private foodService: FoodService
+  ) {}
 
   ngOnInit(): void {
-    this.ratingService.getRating().subscribe((foods) => (this.foods = foods));
+    this.foodService
+      .getFoods()
+      .pipe(
+        switchMap((foods) =>
+          this.ratingService.getRating().pipe(
+            map((rating) => {
+              return rating.map((r) => ({
+                ...r,
+                name: foods.find((f) => f.id === r.foodId)?.name,
+              }));
+            })
+          )
+        )
+      )
+      .subscribe((foods) => (this.foods = foods));
   }
 
   downloadChart(title: string) {
