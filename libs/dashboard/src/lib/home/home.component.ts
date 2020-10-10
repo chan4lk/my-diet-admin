@@ -10,21 +10,32 @@ export class HomeComponent implements OnInit {
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true,
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+            stepSize: 1,
+          },
+        },
+      ],
+    },
   };
   public barChartLabels = [
-    '2006',
-    '2007',
-    '2008',
-    '2009',
-    '2010',
-    '2011',
-    '2012',
+    '10/03',
+    '10/04',
+    '10/05',
+    '10/06',
+    '10/07',
+    '10/08',
+    '10/09',
   ];
   public barChartType = 'bar';
   public barChartLegend = true;
   public barChartData = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
+    { data: [3, 3, 3, 3, 2, 2, 1], label: 'Under Weight' },
+    { data: [1, 1, 1, 1, 1, 2, 3], label: 'Healthy' },
+    { data: [3, 3, 3, 2, 3, 2, 1], label: 'Over Weight' },
   ];
   constructor() {}
 
@@ -63,6 +74,24 @@ export class HomeComponent implements OnInit {
         element.clientHeight
       );
     }
+    doc.save('sample-file.pdf');
+  }
+
+  downloadChart(element: HTMLCanvasElement, title: string) {
+    const doc = new jsPDF('p', 'mm', [1000, 1000]);
+    doc.setFontSize(80);
+    doc.text(`Report Name: ${title}`, 30, 30);
+    doc.setFontSize(30);
+    doc.text(`Report Date: ${new Date().toLocaleDateString()}`, 30, 60);
+    const imgData = element.toDataURL('image/png');
+    doc.addImage(
+      imgData,
+      'PNG',
+      10,
+      90,
+      element.clientWidth,
+      element.clientHeight
+    );
     doc.save('sample-file.pdf');
   }
 }
