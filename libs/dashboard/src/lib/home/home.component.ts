@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
   downloadCharts() {
     const canvases = document.getElementsByTagName('canvas');
     const doc = new jsPDF('p', 'mm', [1000, 1000]);
-
+    let top = 10;
     for (let index = 0; index < canvases.length; index++) {
       const element = canvases[index];
       const imgData = element.toDataURL('image/png');
@@ -42,10 +42,11 @@ export class HomeComponent implements OnInit {
         imgData,
         'PNG',
         10,
-        10 + element.clientHeight,
+        top,
         element.clientWidth,
         element.clientHeight
       );
+      top += element.clientHeight + 20;
     }
     doc.save('sample-file.pdf');
   }
