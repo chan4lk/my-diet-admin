@@ -33,6 +33,6 @@ export class TopGainersChartComponent implements OnInit {
       ]),
       startY: 25,
     });
-    doc.save('top-loosers.pdf');
+    doc.save('top-gainers.pdf');
   }
 }
