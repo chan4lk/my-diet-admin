@@ -18,9 +18,12 @@ export class ReportService {
     return this.api.get<BMIDetail[]>(`${this.environment.report}/Bmi`);
   }
 
-  getHealthData(days: number) {
+  getHealthData(date: Date, days: number) {
     return this.api.get<HealthDetail[]>(
-      `${this.environment.report}/Health/${days}`
+      `${this.environment.report}/Health/${days}/${this.datePipe.transform(
+        date,
+        "yyyy'-'MM'-'dd'"
+      )}`
     );
   }
 

@@ -11,6 +11,7 @@ import { ThemeService } from 'ng2-charts';
   styleUrls: ['./health-category-chart.component.scss'],
 })
 export class HealthCategoryChartComponent implements OnInit {
+  public dateCount = 14;
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true,
@@ -42,21 +43,22 @@ export class HealthCategoryChartComponent implements OnInit {
     ];
 
     const labels: string[] = [];
-    const now = new Date();
-    for (let index = 0; index < 7; index++) {
-      const date = now.setDate(now.getDate() - index);
-      labels.push(this.datePipe.transform(date, 'MM/dd') as string);
-    }
-    this.reportService.getHealthData(7).subscribe((data) => {
-      data.forEach((item) => {
-        chartData[0].data.push(item.underWeightCount);
-        chartData[1].data.push(item.healthyCount);
-        chartData[2].data.push(item.overWeightCount);
-      });
 
-      this.barChartData = chartData;
-      this.barChartLabels = labels;
-    });
+    this.reportService
+      .getHealthData(new Date(), this.dateCount)
+      .subscribe((data) => {
+        data.forEach((item) => {
+          labels.push(
+            this.datePipe.transform(new Date(item.date), 'MM/dd') as string
+          );
+          chartData[0].data.push(item.underWeightCount);
+          chartData[1].data.push(item.healthyCount);
+          chartData[2].data.push(item.overWeightCount);
+        });
+
+        this.barChartData = chartData;
+        this.barChartLabels = labels;
+      });
   }
 
   downloadChart(element: HTMLCanvasElement, title: string) {

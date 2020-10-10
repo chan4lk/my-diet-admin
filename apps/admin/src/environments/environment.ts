@@ -12,6 +12,7 @@ export const environment = {
   progress: 'api/Progress',
   profile: 'Profiles',
   report: 'Report',
+  rating: 'api/Rating',
 };
 
 /*

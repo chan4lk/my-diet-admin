@@ -9,6 +9,7 @@ export interface Environment {
   progress: string;
   profile: string;
   report: string;
+  rating: string;
 }
 export const ENV: InjectionToken<Environment> = new InjectionToken<Environment>(
   'env'
