@@ -1,0 +1,24 @@
+<div class="card mt-2 mr-2">
+  <div class="card-body">
+    <h5 class="card-title">7 Days User base</h5>
+    <p class="card-text">
+      Checkout Underweight, Overweight and healthy people count.
+    </p>
+    <button
+      data-html2canvas-ignore="true"
+      (click)="downloadChart(chart2, '7 Days User base')"
+      class="btn btn-primary"
+    >
+      Download
+    </button>
+    <canvas
+      baseChart
+      #chart2
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      [chartType]="barChartType"
+    ></canvas>
+  </div>
+</div>

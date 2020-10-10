@@ -1,0 +1,24 @@
+<div class="card mt-2 mr-2">
+  <div class="card-body">
+    <h5 class="card-title">Latest BMI Values</h5>
+    <p class="card-text">
+      Checkout BMI Values of the Users.
+    </p>
+    <button
+      data-html2canvas-ignore="true"
+      (click)="downloadChart(chart, 'Latest BMI Values')"
+      class="btn btn-primary"
+    >
+      Download
+    </button>
+    <canvas
+      baseChart
+      #chart
+      [datasets]="chartData"
+      [labels]="chartLabels"
+      [options]="chartOptions"
+      [legend]="chartLegend"
+      [chartType]="cahrtType"
+    ></canvas>
+  </div>
+</div>

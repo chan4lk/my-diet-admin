@@ -7,36 +7,6 @@ import jsPDF from 'jspdf';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  public barChartOptions = {
-    scaleShowVerticalLines: false,
-    responsive: true,
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-            stepSize: 1,
-          },
-        },
-      ],
-    },
-  };
-  public barChartLabels = [
-    '10/03',
-    '10/04',
-    '10/05',
-    '10/06',
-    '10/07',
-    '10/08',
-    '10/09',
-  ];
-  public barChartType = 'bar';
-  public barChartLegend = true;
-  public barChartData = [
-    { data: [3, 3, 3, 3, 2, 2, 1], label: 'Under Weight' },
-    { data: [1, 1, 1, 1, 1, 2, 3], label: 'Healthy' },
-    { data: [3, 3, 3, 2, 3, 2, 1], label: 'Over Weight' },
-  ];
   constructor() {}
 
   ngOnInit(): void {}
