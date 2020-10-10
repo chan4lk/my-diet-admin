@@ -43,22 +43,21 @@ export class HealthCategoryChartComponent implements OnInit {
     ];
 
     const labels: string[] = [];
-
-    this.reportService
-      .getHealthData(new Date(), this.dateCount)
-      .subscribe((data) => {
-        data.forEach((item) => {
-          labels.push(
-            this.datePipe.transform(new Date(item.date), 'MM/dd') as string
-          );
-          chartData[0].data.push(item.underWeightCount);
-          chartData[1].data.push(item.healthyCount);
-          chartData[2].data.push(item.overWeightCount);
-        });
-
-        this.barChartData = chartData;
-        this.barChartLabels = labels;
+    const now = new Date();
+    now.setDate(now.getDate() - 1);
+    this.reportService.getHealthData(now, this.dateCount).subscribe((data) => {
+      data.forEach((item) => {
+        labels.push(
+          this.datePipe.transform(new Date(item.date), 'MM/dd') as string
+        );
+        chartData[0].data.push(item.underWeightCount);
+        chartData[1].data.push(item.healthyCount);
+        chartData[2].data.push(item.overWeightCount);
       });
+
+      this.barChartData = chartData;
+      this.barChartLabels = labels;
+    });
   }
 
   downloadChart(element: HTMLCanvasElement, title: string) {
