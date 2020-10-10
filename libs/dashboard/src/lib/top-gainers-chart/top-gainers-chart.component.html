@@ -18,8 +18,8 @@
             <th scope="col">#</th>
             <th scope="col">Full Name</th>
             <th scope="col">Weight</th>
-            <th scope="col">Weight Change</th>
-            <th scope="col">Change Percentage</th>
+            <th scope="col">Change</th>
+            <th scope="col">Percentage</th>
           </tr>
         </thead>
         <tbody>
@@ -28,7 +28,7 @@
             <td>{{ item.fullName }}</td>
             <td>{{ item.weight }}</td>
             <td>{{ item.change }}</td>
-            <td>{{ item.percentage }}</td>
+            <td>{{ item.percentage * 100 | number: '1.0-0' }}%</td>
             <td></td>
           </tr>
         </tbody>
