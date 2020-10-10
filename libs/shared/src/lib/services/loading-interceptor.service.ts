@@ -19,10 +19,20 @@ export class LoadingInterceptor implements HttpInterceptor {
   }
 
   async handle(req: HttpRequest<any>, next: HttpHandler) {
-    // Important: Note the .toPromise()
+    const overlay = document.getElementsByClassName('loading-overlay')[0];
+    if (!overlay.classList.contains('is-active')) {
+      overlay.classList.toggle('is-active');
+    }
     return next
       .handle(req)
-      .pipe(finalize(async () => await Promise.resolve(true)))
+      .pipe(
+        finalize(async () => {
+          if (overlay.classList.contains('is-active')) {
+            overlay.classList.toggle('is-active');
+          }
+          await Promise.resolve(true);
+        })
+      )
       .toPromise();
   }
 }

@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from '@my-diet-admin/shared';
+import { AuthInterceptor, LoadingInterceptor } from '@my-diet-admin/shared';
 import { ENV } from '@my-diet-admin/token';
 import { environment } from '../environments/environment';
 import { ChartsModule } from 'ng2-charts';
@@ -24,6 +24,11 @@ import { ChartsModule } from 'ng2-charts';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
       multi: true,
     },
     {

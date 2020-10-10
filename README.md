@@ -11,3 +11,5 @@ Run Application
 ```bash
 npm start
 ```
+
+[Launch Application](http://localhost:4200/)
