@@ -1,12 +1,12 @@
 <div class="card mt-2 mr-2">
   <div class="card-body">
-    <h5 class="card-title">Food Rating</h5>
+    <h5 class="card-title">Food Rating By Day of Week</h5>
     <p class="card-text d-inline">
       Checkout ratings for each food item.
     </p>
     <button
       data-html2canvas-ignore="true"
-      (click)="downloadChart('Top Gainers')"
+      (click)="downloadChart('Food Rating By Date')"
       class="btn btn-primary mb-2 d-inline"
     >
       Download
@@ -56,7 +56,6 @@
                 ></i>
               </td>
               <td>{{ item.date | date: 'MM/dd/yyy' }}</td>
-              <td></td>
             </tr>
           </tbody>
         </table>

@@ -1,7 +1,12 @@
 import { DatePipe } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { ENV, Environment } from '@my-diet-admin/token';
-import { BMIDetail, HealthDetail, TopUser } from '../models/report.models';
+import {
+  BMIDetail,
+  FoodRating,
+  HealthDetail,
+  TopUser,
+} from '../models/report.models';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -42,6 +47,16 @@ export class ReportService {
         date,
         "yyyy'-'MM'-'dd'"
       )}/${count}`
+    );
+  }
+
+  getRating() {
+    return this.api.get<FoodRating[]>(`${this.environment.report}/Rating`);
+  }
+
+  getRatingByDayOfWeek(day: number) {
+    return this.api.get<FoodRating[]>(
+      `${this.environment.report}/Rating/ByDay/${day}`
     );
   }
 }
