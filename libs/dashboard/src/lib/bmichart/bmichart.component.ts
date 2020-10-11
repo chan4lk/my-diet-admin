@@ -42,7 +42,7 @@ export class BMIChartComponent implements OnInit {
 
   downloadChart(element: HTMLCanvasElement, title: string) {
     const doc = new jsPDF('p', 'mm', [1000, 1000]);
-    doc.setFontSize(80);
+    doc.setFontSize(50);
     doc.text(`Report Name: ${title}`, 30, 30);
     doc.setFontSize(30);
     doc.text(`Report Date: ${new Date().toLocaleDateString()}`, 30, 60);

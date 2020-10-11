@@ -36,9 +36,9 @@ export class FoodRatingComponent implements OnInit {
 
   downloadChart(title: string) {
     const doc = new jsPDF('p', 'mm');
-    doc.setFontSize(30);
+    doc.setFontSize(15);
     doc.text(`Report Name: ${title}`, 10, 10);
-    doc.setFontSize(20);
+    doc.setFontSize(10);
     doc.text(`Report Date: ${new Date().toLocaleDateString()}`, 10, 20);
     (doc as any).autoTable({
       head: [['Food Id', 'User Id', 'Rating', 'Date']],

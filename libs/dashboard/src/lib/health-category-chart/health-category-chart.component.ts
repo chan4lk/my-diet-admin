@@ -61,13 +61,13 @@ export class HealthCategoryChartComponent implements OnInit {
   }
 
   downloadChart(element: HTMLCanvasElement, title: string) {
-    const doc = new jsPDF('p', 'mm', [
-      element.clientWidth,
-      element.clientHeight,
+    const doc = new jsPDF('p', 'px', [
+      1000,
+      1000,
     ]);
-    doc.setFontSize(80);
+    doc.setFontSize(20);
     doc.text(`Report Name: ${title}`, 30, 30);
-    doc.setFontSize(30);
+    doc.setFontSize(15);
     doc.text(`Report Date: ${new Date().toLocaleDateString()}`, 30, 60);
     const imgData = element.toDataURL('image/png');
     doc.addImage(
