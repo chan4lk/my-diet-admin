@@ -31,41 +31,4 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  downloadCharts() {
-    const canvases = document.getElementsByTagName('canvas');
-    const doc = new jsPDF('p', 'mm', [1000, 1000]);
-    let top = 10;
-    for (let index = 0; index < canvases.length; index++) {
-      const element = canvases[index];
-      const imgData = element.toDataURL('image/png');
-      doc.addImage(
-        imgData,
-        'PNG',
-        10,
-        top,
-        element.clientWidth,
-        element.clientHeight
-      );
-      top += element.clientHeight + 20;
-    }
-    doc.save('sample-file.pdf');
-  }
-
-  downloadChart(element: HTMLCanvasElement, title: string) {
-    const doc = new jsPDF('p', 'mm', [1000, 1000]);
-    doc.setFontSize(80);
-    doc.text(`Report Name: ${title}`, 30, 30);
-    doc.setFontSize(30);
-    doc.text(`Report Date: ${new Date().toLocaleDateString()}`, 30, 60);
-    const imgData = element.toDataURL('image/png');
-    doc.addImage(
-      imgData,
-      'PNG',
-      10,
-      90,
-      element.clientWidth,
-      element.clientHeight
-    );
-    doc.save('sample-file.pdf');
-  }
 }
